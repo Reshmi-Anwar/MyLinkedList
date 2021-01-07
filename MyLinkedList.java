@@ -38,16 +38,17 @@ public class MyLinkedList{
    if (index > size){
      throw new IndexOutOfBoundsException("Out of Bounds");
    }
+   if(index == size()){
+     add(value);
+     return;
+   }
    if(index == 0){
      Node n = start;//creates node
      start = new Node(value);//assigns it to value
      start.setNext(n);
      n.setPrev(start);
    }
-   if(index == size()){
-     add(value);
-     return;
-   }
+
    else{
      Node current = getNode(index);
      Node n = new Node(value);
@@ -58,10 +59,38 @@ public class MyLinkedList{
    }
    size++;
  }
- /*
- public String get(int index);
- public String set(int index, String value);
- public String toString();
- */
- //Any helper method that returns a Node object MUST BE PRIVATE!
+
+ public String get(int index){
+   if ((index >= size()) || (index < 0)){
+     throw new IndexOutOfBoundsException("Out of Bounds");
+
+   }
+   return (getNode(index).getData());
+ }
+
+ public String set(int index, String value){
+   if ((index >= size()) || (index < 0)){
+     throw new IndexOutOfBoundsException("Out of Bounds");
+
+   }
+   Node current = getNode(index);
+   String n = current.getData();
+   current.setData(value);
+   return n;
+ }
+
+ public String toString(){
+   Node current = start;
+   String result = "[";
+   while(current.getNext()!= null){
+     result = result + current.getData();
+     current = current.getNext();
+     if(current.getNext() != null){
+       result = result + ", ";
+     }
+   }
+   result += "]";
+   return result;
+ }
+
 }
