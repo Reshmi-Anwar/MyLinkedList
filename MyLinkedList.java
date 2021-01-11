@@ -109,4 +109,11 @@ public class MyLinkedList{
    return n;
  }
 
+  public String remove(int index){
+    if ((index >= size()) || (index < 0)){
+      throw new IndexOutOfBoundsException("Out of Bounds");
+
+    }
+  }
+
 }
