@@ -138,4 +138,8 @@ public class MyLinkedList{
     return removedNode.getData();
   }
 
+    public void extend(MyLinkedList other){
+      
+    }
+
 }
