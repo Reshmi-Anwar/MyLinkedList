@@ -92,5 +92,21 @@ public class MyLinkedList{
    result += "]";
    return result;
  }
+ public String toStringReversed(){
+   if(size == 0){
+     return "[]";
+   }
+   Node current = end;
+   String n = "[";
+   while(current != null){
+      n += current.getData();
+      if(current.getPrev() != null){
+        n+= ", ";
+      }
+      current = current.getPrev();
+   }
+   n += "]";
+   return n;
+ }
 
 }
