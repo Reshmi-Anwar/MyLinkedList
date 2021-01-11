@@ -112,7 +112,13 @@ public class MyLinkedList{
   public String remove(int index){
     if ((index >= size()) || (index < 0)){
       throw new IndexOutOfBoundsException("Out of Bounds");
-
+    }
+    size--;
+    if(size() == 0){
+      String n = start.getData();
+      start = null;
+      end = null;
+      return n;
     }
   }
 
