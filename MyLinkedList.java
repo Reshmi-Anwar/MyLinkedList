@@ -120,6 +120,12 @@ public class MyLinkedList{
       end = null;
       return n;
     }
+    if(index == 0){
+      String n = start.getData();
+      start = start.getNext();
+      start.setPrev(null);
+      return n;
+    }
   }
 
 }
