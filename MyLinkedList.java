@@ -126,6 +126,16 @@ public class MyLinkedList{
       start.setPrev(null);
       return n;
     }
+    if (index == size()){
+      String n = end.getData();
+      end = end.getPrev();
+      end.setNext(null);
+      return n;
+    }
+    Node removedNode = getNode(index);
+    removedNode.getNext().setPrev(removedNode.getPrev());
+    removedNode.getPrev().setNext(removedNode.getNext());
+    return removedNode.getData();
   }
 
 }
