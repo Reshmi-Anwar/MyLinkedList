@@ -35,7 +35,7 @@ public class MyLinkedList{
  }
 
  public void add(int index, String value){
-   if ((index >= size()) || (index < 0)){
+   if ((index > size()) || (index < 0)){
      throw new IndexOutOfBoundsException("Out of Bounds");
    }
    if(index == size()){
@@ -51,11 +51,11 @@ public class MyLinkedList{
 
    else{
      Node current = getNode(index);
-     Node n = new Node(value);
-     n.setNext(current);
-     n.setPrev(current.getPrev());
-     current.getPrev().setNext(n);
-     current.setPrev(n);
+     Node x = new Node(value);
+     x.setNext(current);
+     x.setPrev(current.getPrev());
+     current.getPrev().setNext(x);
+     current.setPrev(x);
    }
    size++;
  }
@@ -80,14 +80,17 @@ public class MyLinkedList{
  }
 
  public String toString(){
+   if(size==0){
+     return "[]";
+   }
    Node current = start;
    String result = "[";
-   while(current.getNext()!= null){
-     result = result + current.getData();
-     current = current.getNext();
-     if(current.getNext() != null){
+   while(current!= null){
+     result += current.getData();
+     if((current.getNext() != null)){
        result = result + ", ";
      }
+     current = current.getNext();
    }
    result += "]";
    return result;
